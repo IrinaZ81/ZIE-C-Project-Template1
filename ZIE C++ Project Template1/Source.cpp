@@ -1,85 +1,100 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <algorithm> // различные сортировки
+
+void say_hello() {                      //void переводится пустота, далее имя функции? 
+	std::cout << "Hello world!\n";        //фигурные скобки обязательны
+	std::cout << "Bye world\n";           // void функция не возвращающая никаких значений 
+	                                      // и выводящая сообщение
+}    
+//Функция, не принмающая никаких значений, но принимающая два числа и вычисляющая их сумму
+void print_sum(int num1, int num2) {
+	std::cout << num1 << " +" << num2 << " = " << num1 + num2 << "\n";
+
+}
+//Функция, возвращающая сумму двух переданных в нее целых чисел
+int sum(int num1, int num2) {
+	//int tmp = num1 + num2;
+	return num1 + num2; // вернуть сумму num1 и num2;
+}
+
+//
+void print_arr(int array[], const int length) {
+	std::cout << '[';
+	for (int i = 0; i < length; i++)
+		std::cout << array[i] << ", ";
+	std::cout << "\b\b\]\n";
+
+}
+//Сумма всех элементов массива
+int sum_arr(int array[], const int length) {
+	int sum = 0;
+	for (int i =0; i < length; i++)
+		sum += array[i];
+	return sum;
+}
+                                               
+
+void x2(int num) { //num - параметр функции
+	num *= 2;
+}
+void arr_x2(int arr[]) {
+	arr[3] *= 2;
+}
 int main() {
 	setlocale(LC_ALL, "Russian");
-	int n;
-	int m;
+	int n, m;
 
-	/*//Задача 1. Массив из 10 случайных чисел. программа выводит первые 5 элементов
-	std::cout << "Задача 1. \nСлучайный массив:\n";
-	const int size1 = 10;
-	int arr1[size1];
-	srand(time(NULL));
-	for (int i = 0; i < size1; i++) {
-		arr1[i] = rand() % (10 + 1 - 1) + 1; //[1...10], можно сократить формулу 10+1
-		std::cout << arr1[i] << " ";
-	}
-	std::cout << std::endl;
-
-	// Пузырьковая сортировка
-	//for (int i = 4; i>0; i--)
-		//for (int j = 0; j<i; j++)
-			//if (arr1[i] > arr1[j + 1]) 
-				//std::swap(arr1[j], arr1[j + 1]);
-
-			//быстрая сортировка
-
-	std::sort(arr1, arr1 + 5);
-
-	std::cout << "Итоговый массив:\n";
-	for (int i = 0; i < size1; i++)
-		std::cout << arr1[i] << " ";
-	std::cout << "\n\n";*/
-
-	//Задача2. Температура в январе
-	/*std::cout << "Задача2\nТемпература за все дни января";
-	const int size2 = 31;
-	int arr2[size2];
-	srand(time(NULL));
-	for (int i = 0; i < size2; i++) {
-		arr2[i] = rand() % (30-30);
-		std::cout << arr2[i] << " ";
-	}
-	std::cout << "\b\b.\nВведите максимальную температуру ->";
-	std::cin >> n;
-	int sum = 0;
-	int counter = 0;
-	for (int i = 0; i < size2; i++) {
-		sum += arr2[i];
-		if (arr2[i] <= n)
-			counter++;
-
-	}
-	std::cout << "Средняя температура за месяц: " << (double)sum / size2 << "\n";
-	std::cout << "Кол-во дней, в которые температура опускалась наже " << n << " градусов = " << counter << "\n\n";*/
-
-	//Задача3. Вхождение в диапазон
-	std::cout << "Введите начало диапазона ->";
-	std::cin >> n;
-	std::cout << "Введите конец диапазона ->";
-	std::cin >> m;
-	const int size3 = 20;
-	int arr3[size3];
-	srand(time(NULL));
-	for (int i = 1; i < size3; i++) {
-		arr3[i] = rand() % 100;
-		if (arr3[i] >= n && arr3[i] <= m)
-			std::cout << i + 1 << ". " << arr3[i] << "!\n";
-		else
-		std::cout << i + 1 << ". " << arr3[i] << "\n";
+	//Функции void
 	
-		}
-	std::cout << std::endl;
+	/*say_hello();                        //вызов функции, которую мы создали до main
+	                                    // с типом VOID и без параметров
+	                                               
+
+	say_hello();
+	std::cout << "Введите два числа ->\n";
+	std::cin >> n >> m;
+	
+	print_sum(n, m);
+
+	std::cout << "Введите два числа ->\n";
+	std::cin >> k >> p;
+
+	print_sum(k, p);                      //вызов функции, которую мы создали до main
+	                                    // с типом VOID с двумя параметрами
+
+	print_sum(10, 7);*/
+
+	/*std::cout << "Введите два числа ->\n";
+	std::cin >> n >> m;
+	int result = sum(n, m);  //Запись в переменную  result результата работы функции sum
+	std::cout << "Сумма = " << result << "\n";*/
+
+	//сумма всех элементов массива
+	/*const int size = 5;
+	int arr[size]{ 7, 2, 1, 10, 8 };
+	std::cout << "Массив\n";
+	print_arr(arr, size);
+	std::cout << "Сумма элементов массива: " << sum_arr(arr, size) << std::endl;*/
+
+	n = 10;
+	//std::cout << x2(n) << '\n';
+	x2(n); // n является аргументом функции
+	std::cout << n << '\n'; // 10
+
+	int mass[5]{ 10, 20, 30, 40, 50 };
+	x2(mass[3]);
+		std::cout << mass[3] << '\n';
+
+
 
 
 
 
 
 	
-	
-	
+
+
+
+
 	
 
 
